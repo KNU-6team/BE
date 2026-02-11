@@ -1,0 +1,19 @@
+설치
+
+python -m venv .venv && source .venv/bin/activate(리눅스 기준이라서 윈도우는 .venv\Scripts\activate)
+
+pip install -r requirements.txt
+
+DB 준비
+
+CREATE DATABASE boneage...
+
+CREATE USER boneage_user...
+
+마이그레이션
+
+flask db upgrade
+
+실행
+
+python app.py 또는 flask run

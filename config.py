@@ -2,9 +2,9 @@ import os
 
 def mysql_uri():
     host = os.getenv("DB_HOST","127.0.0.1")
-    port = os.getenv("DB_PORT","3308")
+    port = os.getenv("DB_PORT","3306")
     name = os.getenv("DB_NAME","boneage")
-    user = os.getenv("DB_USER","root")
+    user = os.getenv("DB_USER","boneage_user")
     pw = os.getenv("DB_PASSWORD","1234")
 
     return f"mysql+pymysql://{user}:{pw}@{host}:{port}/{name}?charset=utf8mb4"

@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 from config import config
 from models import db
 from routes.analyses import bp
+from flask_migrate import Migrate
+
+migrate = Migrate()
 
 def create_app():
     load_dotenv()
@@ -21,9 +24,8 @@ def create_app():
         return {"status": "ok", "team": "Silla System - 6Team"}
 
     db.init_app(app)
-    with app.app_context():
-        db.create_all()  # MVP용. 추후 Alembic으로 전환 권장
-
+    migrate.init_app(app, db)
+    
     app.register_blueprint(bp)
     return app
 

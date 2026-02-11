@@ -19,9 +19,17 @@ class Analysis(db.Model):
     study_date = db.Column(db.Date, nullable=False)
 
     xray_path = db.Column(db.String(255), nullable=False)
-    xray_format = db.Column(Enum("DICOM", "JPG", "PNG", name="xray_format_enum"), nullable=False)
+    # ✅ WEBP 추가
+    xray_format = db.Column(
+        Enum("DICOM", "JPG", "PNG", "WEBP", name="xray_format_enum"),
+        nullable=False
+    )
 
-    status = db.Column(Enum("QUEUED", "RUNNING", "DONE", "FAILED", name="status_enum"), nullable=False, default="QUEUED")
+    status = db.Column(
+        Enum("QUEUED", "RUNNING", "DONE", "FAILED", name="status_enum"),
+        nullable=False,
+        default="QUEUED"
+    )
     bone_age_years = db.Column(db.Numeric(4, 1), nullable=True)
 
     ai_raw_path = db.Column(db.String(255), nullable=True)
